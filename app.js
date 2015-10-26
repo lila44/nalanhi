@@ -1,6 +1,6 @@
 /*
     author      : 임정채
-    date        : 2015.10.26
+    date        : 2015.10.26 22:15
     description : node.js 최초 테스트 모듈
 */
 
