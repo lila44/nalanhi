@@ -1,0 +1,14 @@
+<!doctype html>
+<html ng-app="boardApplication">
+	<head>
+		<meta charset="utf-8">
+		<script src="/script/angular/1.4.7/angular.min.js"></script>
+		<script src="/script/angular/1.4.7/angular-route.min.js"></script>
+		<script src="/board/boardController.js"></script>
+	</head>
+	<body ng-controller="postsController">
+		<div><a href="#boardList">목록</a></div>
+		<div><a href="#boardInsert">등록</a></div>
+		<ng-view></ng-view>
+	</body>
+</html>
