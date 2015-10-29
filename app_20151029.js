@@ -22,7 +22,6 @@ var express        = require('express');
 var path           = require('path');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-var postsRoute     = require(__dirname + '/routes/posts');
 var application    = express();
 
 
@@ -36,18 +35,16 @@ application.use(bodyParser.urlencoded({extended:true}));
 // method override
 application.use(methodOverride("_method"));
 
+console.log(__dirname);
+
+
 application.get('/test', function(request, response){
-    response.sendfile('public/angular/view/test/test.html');
+    response.sendFile('/public/angular/view/test/test.html');
 });
-application.get('/test/clock', function(request, response){
-    response.sendfile('public/angular/view/test/clock.html');
+application.get('/test/test01', function(request, response){
+    response.sendFile('/public/angular/view/test/test01.html', { root: __dirname } );
 });
-application.get   ('/posts',     postsRoute.index  );
-application.post  ('/posts',     postsRoute.create );
-application.get   ('/posts/:id', postsRoute.show   );
-application.put   ('/posts/:id', postsRoute.update );
-application.delete('/posts/:id', postsRoute.destory);
-application.delete('*',          postsRoute.main   );
+
 
 // listen request
 application.listen(7777, function(){
