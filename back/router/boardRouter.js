@@ -13,8 +13,9 @@ connection.on('error', function(e){
 
 // database - schema
 var schema = mongoose.Schema({
-    title     : {type:String, required:true    },
-    name      : {type:String, required:true    }
+    title     : {type:String, required:true },
+    name      : {type:String, required:true },
+    contents  : {type:String, required:true }
 });
 
 
@@ -29,10 +30,9 @@ exports.boardList = function(request, response){
     });
 };
 
-// 게시판 목록
+// 게시판 등록
 exports.insertBoard = function(request, response){
-    // todo. request 안에 있는 json 정보를 어떻게 가져오나?
-    datasource.create({title:'제목', name:'이름'}, function(e, post){
+    datasource.create(request.body, function(e, post){
         if(e){ console.log(e); return response.json({success:false, message:e}); }
         response.json({success:true, data:post});
     });

@@ -22,13 +22,15 @@ var express        = require('express');
 var path           = require('path');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-var boardRoute     = require(__dirname + '/back/board');
+var boardRoute     = require(__dirname + '/back/router/boardRouter');
 var application    = express();
 
 
 // web path
-application.use(express.static(path.join(__dirname, '/front/public')));
-application.use(express.static(path.join(__dirname, '/front/angular/view')));
+application.use(express.static(path.join(__dirname, '/front/public'            )));
+application.use(express.static(path.join(__dirname, '/front/angular/view'      )));
+application.use(express.static(path.join(__dirname, '/front/angular/common'    )));
+application.use(express.static(path.join(__dirname, '/front/angular/service'   )));
 application.use(express.static(path.join(__dirname, '/front/angular/controller')));
 
 // json parser

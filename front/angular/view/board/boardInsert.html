@@ -1,9 +1,9 @@
 <form name="form1">
 	<div ng-controller="boardInsertController">
 		<div>
-		    이름 : <input type='text' ng-model='name'     value="이름" /><br>
-			제목 : <input type='text' ng-model='title'    value="제목" /><br>
-			내용 : <input type='text' ng-model='contents' value="내용" /><br>
+		    이름 : <input type='text' ng-model='board.name'     value="이름" /><br>
+			제목 : <input type='text' ng-model='board.title'    value="제목" /><br>
+			내용 : <input type='text' ng-model='board.contents' value="내용" /><br>
 			<div ng-click="insertBoard()"><b>저장</b></div>
 		<div>
 	</div>
