@@ -3,20 +3,27 @@ var boardApplication = angular.module('boardApplication', ['ngRoute', 'boardServ
 
 boardApplication.controller('boardListController', function ($scope, boardService) {
 
-	boardService.getBoardList(function(result){
-		$scope.boardList = result;
+	boardService.getBoardList(function(data){
+		$scope.boardList = data;
 	});
 });
 
 
-boardApplication.controller('boardViewController', function ($scope) {
-	alert('boardViewController');
+boardApplication.controller('boardViewController', function ($scope, boardService) {
+
+	$scope.boardView = function(){
+		boardService.getBoardView(function(data){
+			alert(data.contents);
+			//$scope.board = data;
+		}, {"_id":"56360dcd2a66c2980b7bd007"});
+    };
+
 });
 
 boardApplication.controller('boardInsertController', function ($scope, boardService) {
 
 	$scope.insertBoard = function(){
-		boardService.insertBoard(function(result){
+		boardService.insertBoard(function(data){
 			location.href = "#boardList";
 		}, angular.toJson($scope.board));
     };

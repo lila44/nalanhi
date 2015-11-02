@@ -1,39 +1,36 @@
-var mongoose  = require('mongoose');
+var mongodb  = require('./../common/mongodb');
+var mongoose = mongodb.getMongoose();
 
-
-// database - connection
-mongoose.connect(process.env.MONGO_DB);
-var connection = mongoose.connection;
-connection.once('open', function(){
-    console.log('db ready..');
-});
-connection.on('error', function(e){
-    console.log('db error : ' + e);
-});
-
-// database - schema
-var schema = mongoose.Schema({
+// collection : c_boards(업체게시판)
+var c_board_schema = mongoose.Schema({
     title     : {type:String, required:true },
     name      : {type:String, required:true },
     contents  : {type:String, required:true }
 });
 
+var datasource = mongodb.getDatasource('c_boards', c_board_schema);
 
-// database - datasource
-var datasource = mongoose.model('c_boards', schema);
 
 // 게시판 목록
 exports.boardList = function(request, response){
     datasource.find({}).sort('-name').exec(function(e, data){
-        if(e){ console.log(e); return response.json({success:false, message:e}); }
-        response.json(data);
+        if(e){ console.log(e); return response.json( {success:false, message:e}); }
+        response.json({success:true, result:data});
+    });
+};
+
+// 게시판 상세 조회
+exports.boardView = function(request, response){
+    datasource.find({_id:request.body._id}, function(e, data){
+        if(e){ console.log(e); return response.json( {success:false, message:e}); }
+        response.json({success:true, result:data});
     });
 };
 
 // 게시판 등록
 exports.insertBoard = function(request, response){
-    datasource.create(request.body, function(e, post){
-        if(e){ console.log(e); return response.json({success:false, message:e}); }
-        response.json({success:true, data:post});
+    datasource.create(request.body, function(e, data){
+        if(e){ console.log(e); return response.json( {success:false, message:e}); }
+        response.json({success:true, result:data});
     });
 };

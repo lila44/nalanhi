@@ -10,9 +10,29 @@ boardServiceApplication.service('boardService', function($http) {
 			url    : '/board/boardList',
 			data   : null
 		}).success(function(data) {
-			callback(data);
-		}).error(function(e) {
-			console.log('e=' + e);
+			if(data.success){
+				callback(data.result);
+			}
+			else{
+				alert('처리중 오류가 발생했습니다.');
+			}
+		});
+	};
+
+	this.getBoardView = function(callback, params) {
+		var stream = $http({
+			method : 'post',
+			url    : '/board/boardView',
+			data   : params
+		}).success(function(data) {
+			if(data.success){
+				callback(data.result);
+			}
+			else{
+				alert('처리중 오류가 발생했습니다.');
+			}
+		}).error(function(e){
+			alert(e);
 		});
 	};
 
@@ -23,10 +43,13 @@ boardServiceApplication.service('boardService', function($http) {
 	        url      : '/board/insertBoard',
 			data     : params
 		}).success(function(data) {
-			alert('저장되었습니다.');
-			callback(data);
-		}).error(function(e) {
-			console.log('e=' + e);
+			if(data.success){
+				alert('저장되었습니다.');
+				callback(data.result);
+			}
+			else{
+				alert('처리중 오류가 발생했습니다.');
+			}
 		});
 	};
 });

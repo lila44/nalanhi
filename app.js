@@ -48,4 +48,5 @@ application.listen(7777, function(){
 
 
 application.get ('/board/boardList',   boardRoute.boardList);
+application.post('/board/boardView',   boardRoute.boardView);
 application.post('/board/insertBoard', boardRoute.insertBoard);

@@ -1,14 +1,14 @@
-<!doctype html>
-<html ng-app="boardApplication">
-	<head>
-		<meta charset="utf-8">
-		<script src="/script/angular/1.4.7/angular.min.js"></script>
-		<script src="/script/angular/1.4.7/angular-route.min.js"></script>
-		<script src="/board/boardController.js"></script>
-	</head>
-	<body ng-controller="postsController">
-		<div><a href="#boardList">목록</a></div>
-		<div><a href="#boardInsert">등록</a></div>
-		<ng-view></ng-view>
-	</body>
-</html>
+<div ng-controller="boardViewController">
+	<div>
+		<table>
+			<tr>
+				<td ng-click="boardView()">제목</td>
+				<td>{{result.title}}</td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td>{{result.name}}</td>
+			</tr>
+		</table>
+	<div>
+</div>
