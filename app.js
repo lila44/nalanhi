@@ -22,7 +22,7 @@ var express        = require('express');
 var path           = require('path');
 var bodyParser     = require('body-parser');
 var methodOverride = require('method-override');
-var boardRoute     = require(__dirname + '/back/router/boardRouter');
+var boardRouter    = require(__dirname + '/back/router/boardRouter');
 var application    = express();
 
 
@@ -41,12 +41,11 @@ application.use(bodyParser.urlencoded({extended:true}));
 // method override
 application.use(methodOverride("_method"));
 
+// routes
+application.use(boardRouter);
+
+
 // listen request
 application.listen(7777, function(){
     console.log('server ready..');
 });
-
-
-application.get ('/board/boardList',   boardRoute.boardList);
-application.post('/board/boardView',   boardRoute.boardView);
-application.post('/board/insertBoard', boardRoute.insertBoard);

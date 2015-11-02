@@ -1,18 +1,19 @@
-<form name="form1">
-	<div ng-controller="boardListController">
-		<div>
-			<table>
-				<tr>
-					<td>번호</td>
-					<td>제목</td>
-					<td>이름</td>
-				</tr>
-				<tr ng-repeat="result in boardList">
-					<td>{{result._id}}</td>
-					<td>{{result.title}}</td>
-					<td>{{result.name}}</td>
-				</tr>
-			</table>
-		<div>
-	</div>
-</form>
+<div>
+	<div>
+		<table>
+			<tr>
+				<td>번호</td>
+				<td>제목</td>
+				<td>이름</td>
+			</tr>
+			<tr ng-repeat="board in boardList">
+				<td><a href="#boardView/{{board._id}}">{{board._id}}</a></td>
+				<td>{{board.title}}</td>
+				<td>{{board.name}}</td>
+			</tr>
+		</table>
+
+		<a href="#boardList">목록</a>
+		<a href="#boardInsert">등록</a>
+	<div>
+</div>

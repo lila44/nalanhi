@@ -1,14 +1,26 @@
-<div ng-controller="boardViewController">
+<div>
 	<div>
 		<table>
 			<tr>
-				<td ng-click="boardView()">제목</td>
-				<td>{{result.title}}</td>
+				<td>번호</td>
+				<td>{{board._id}}</td>
 			</tr>
 			<tr>
 				<td>이름</td>
-				<td>{{result.name}}</td>
+				<td>{{board.name}}</td>
+			</tr>
+			<tr>
+				<td>제목</td>
+				<td>{{board.title}}</td>
+			</tr>
+			<tr>
+				<td>내용</td>
+				<td>{{board.contents}}</td>
 			</tr>
 		</table>
+
+		<a href="#boardList">목록</a>
+		<a ng-href="#boardUpdate/{{board._id}}">수정</a>
+		<a ng-href="#boardDelete/{{board._id}}">삭제</a>
 	<div>
 </div>

@@ -54,13 +54,13 @@ postsApplication.directive("postsDirective", function(){
         scope    : false,
         //templateUrl : "/angular/view/test/testDirectve.html"
 		templateUrl : function(element, attribute){
+			alert();
 			return "/angular/view/test/testDirectve-" + attribute.type + ".html";
 		}
     };
 });
 
 postsApplication.config(function($routeProvider) {
-
 	$routeProvider.when     ('/testDirectve-one', {templateUrl:'/test/testDirectve-one.html'});
 	$routeProvider.when     ('/testDirectve-two', {templateUrl:'/test/testDirectve-two.html', controller:'testRouteController'});
 	$routeProvider.otherwise('/testDirectve-one', {templateUrl:'/test/testDirectve-one.html'});

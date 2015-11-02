@@ -6,12 +6,10 @@
 		<script src="/script/angular/1.4.7/angular-route.min.js"></script>
 		<script src="/board/boardController.js"></script>
 		<script src="/board/boardService.js"></script>
-		<script src="/utils.js"></script>
 	</head>
 	<body>
-		<div><a href="#boardList">목록</a></div>
-		<div><a href="#boardView">조회</a></div>
-		<div><a href="#boardInsert">등록</a></div>
-		<ng-view></ng-view>
+		<form name="form1">
+			<ng-view></ng-view>
+		</form>
 	</body>
 </html>
