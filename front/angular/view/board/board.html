@@ -1,15 +1,35 @@
+<!--
+	author      : 임정채
+	date        : 2015.11.02 13:00
+	description : 게시판 메인
+-->
 <!doctype html>
 <html ng-app="boardApplication">
 	<head>
 		<meta charset="utf-8">
 		<script src="/script/angular/1.4.7/angular.min.js"></script>
 		<script src="/script/angular/1.4.7/angular-route.min.js"></script>
+		<script src="/interceptor/initInterceptor.js"></script>
 		<script src="/board/boardController.js"></script>
 		<script src="/board/boardService.js"></script>
+		<link rel="stylesheet" type="text/css" href="/css/board.css" />
 	</head>
 	<body>
 		<form name="form1">
-			<ng-view></ng-view>
+			<table border="1" width="600" height="400">
+				<tr>
+					<td rowspan="4" width="50"><directive-layout type="left"></directive-layout></td>
+				</tr>
+				<tr>
+					<td height="30"><directive-layout type="header"></directive-layout></td>
+				</tr>
+				<tr>
+					<td height="360"><ng-view></ng-view></td>
+				</tr>
+				<tr>
+					<td height="30"><directive-layout type="footer"></directive-layout></td>
+				</tr>
+			</table>
 		</form>
 	</body>
 </html>

@@ -1,3 +1,8 @@
+/*
+    author      : 임정채
+    date        : 2015.11.02 13:00
+    description : mongodb driver
+*/
 var mongoose  = require('mongoose');
 
 // connect
@@ -8,7 +13,7 @@ mongoose.connection.once('open', function(){
     console.log('db ready..');
 });
 
-// return mongoose
+
 this.getMongoose = function(){
     return mongoose;
 };

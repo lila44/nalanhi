@@ -1,4 +1,8 @@
-
+/*
+    author      : 임정채
+    date        : 2015.11.02 13:00
+    description : 게시판 서비스
+*/
 var boardServiceApplication = angular.module('boardServiceApplication', []);
 
 boardServiceApplication.service('boardService', function($http) {

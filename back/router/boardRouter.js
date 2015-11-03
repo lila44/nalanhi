@@ -1,3 +1,8 @@
+/*
+    author      : 임정채
+    date        : 2015.11.02 13:00
+    description : 게시판 라우터
+*/
 var express  = require('express');
 var mongodb  = require('./../common/mongodb');
 var mongoose = mongodb.getMongoose();

@@ -37,7 +37,6 @@ application.use(express.static(path.join(__dirname, '/front/angular/controller')
 application.use(bodyParser.json());
 application.use(bodyParser.urlencoded({extended:true}));
 
-
 // method override
 application.use(methodOverride("_method"));
 

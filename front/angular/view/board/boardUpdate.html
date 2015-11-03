@@ -1,3 +1,8 @@
+<!--
+	author      : 임정채
+	date        : 2015.11.02 13:00
+	description : 게시판 수정
+-->
 <div>
 	<div>
 		번호 : <input type='text' ng-model='board._id'      /><br>
@@ -5,7 +10,7 @@
 		제목 : <input type='text' ng-model='board.title'    /><br>
 		내용 : <input type='text' ng-model='board.contents' /><br>
 
-		<a href="#boardList">목록</a>
+		<a ng-href="#boardList">목록</a>
 		<a ng-click="updateBoard()">저장</a>
 	<div>
 </div>

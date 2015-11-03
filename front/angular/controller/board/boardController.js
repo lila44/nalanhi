@@ -1,5 +1,9 @@
-
-var boardApplication = angular.module('boardApplication', ['ngRoute', 'boardServiceApplication']);
+/*
+    author      : 임정채
+    date        : 2015.11.02 13:00
+    description : 게시판 컨트롤러
+*/
+var boardApplication = angular.module('boardApplication', ['ngRoute', 'initInterceptor', 'boardServiceApplication']);
 
 boardApplication.controller('boardListController', function ($scope, boardService) {
 
@@ -8,7 +12,7 @@ boardApplication.controller('boardListController', function ($scope, boardServic
 	});
 });
 
-boardApplication.controller('boardViewController', function ($scope, $routeParams, boardService) {
+boardApplication.controller('boardViewController', function ($scope, $routeParams, $location, boardService) {
 
 	$scope.board = {};
 	boardService.getBoardView($routeParams, function(data){
@@ -21,22 +25,22 @@ boardApplication.controller('boardViewController', function ($scope, $routeParam
 
 	$scope.deleteBoard = function(){
 		boardService.deleteBoard($scope.board, function(data){
-			location.href = "#boardList";
+			$location.url("/boardList");
 		});
     };
 });
 
-boardApplication.controller('boardInsertController', function ($scope, boardService) {
+boardApplication.controller('boardInsertController', function ($scope, $location, boardService) {
 
 	$scope.board = {};
 	$scope.insertBoard = function(){
 		boardService.insertBoard($scope.board, function(data){
-			location.href = "#boardList";
+			$location.url("/boardList");
 		});
     };
 });
 
-boardApplication.controller('boardUpdateController', function ($scope, $routeParams, boardService) {
+boardApplication.controller('boardUpdateController', function ($scope, $routeParams, $location, boardService) {
 
 	$scope.board = {};
 	boardService.getBoardView($routeParams, function(data){
@@ -49,8 +53,18 @@ boardApplication.controller('boardUpdateController', function ($scope, $routePar
 
 	$scope.updateBoard = function(){
 		boardService.updateBoard($scope.board, function(data){
-			location.href = "#boardList";
+			$location.url("/boardList");
 		});
+    };
+});
+
+boardApplication.directive("directiveLayout", function(){
+    return {
+        restrict    : "E", // E:element, A:attribute, C:class
+        scope       : false,
+		templateUrl : function(element, attribute){
+			return "/common/" + attribute.type + ".html";
+		}
     };
 });
 
