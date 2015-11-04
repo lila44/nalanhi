@@ -4,7 +4,7 @@
     description : 게시판 라우터
 */
 var express  = require('express');
-var mongodb  = require('./../common/mongodb');
+var mongodb  = require('./../common/database/mongodb');
 var mongoose = mongodb.getMongoose();
 var router   = express.Router();
 

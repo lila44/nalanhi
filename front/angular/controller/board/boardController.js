@@ -3,7 +3,7 @@
     date        : 2015.11.02 13:00
     description : 게시판 컨트롤러
 */
-var boardApplication = angular.module('boardApplication', ['ngRoute', 'initInterceptor', 'boardServiceApplication']);
+var boardApplication = angular.module('boardApplication', ['ngRoute', 'initializeInterceptor', 'boardServiceApplication']);
 
 boardApplication.controller('boardListController', function ($scope, boardService) {
 
