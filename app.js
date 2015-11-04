@@ -49,8 +49,7 @@ application.use(function(request, response, next) {
 // routes - boardRouter
 application.use(boardRouter);
 
-
 // listen request
-application.listen(7777, function(){
+application.listen(process.env.NODE_SERVER_PORT, function(){
     console.log('server ready..');
 });
