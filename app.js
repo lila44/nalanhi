@@ -12,10 +12,10 @@
     - Update | PUT    | 수정저장
     - Detory | DELETE | 삭제
 
-    - body-parser
-    request.body   : Post로 넘어온 값이라고 보면 됩니다.
-    request.query  : Get으로 넘어온 값이라고 보면 됩니다.
-    request.params : RESTful 요청에 동적으로 변경되는 :variable에 대한 처리
+    body-parser
+    - request.body   : Post로 넘어온 값이라고 보면 됩니다.
+    - request.query  : Get으로 넘어온 값이라고 보면 됩니다.
+    - request.params : RESTful 요청에 동적으로 변경되는 :variable에 대한 처리
 
 */
 var express               = require('express'                                                   );

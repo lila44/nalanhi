@@ -14,8 +14,8 @@ var intercepter = function($q, $location){
 		request : function(config){
 			return config;
 		},
-		response : function(result){
-			return result;
+		response : function(response){
+			return response;
 		},
 		responseError : function(rejection){
 			console.log('responseError = ', rejection);

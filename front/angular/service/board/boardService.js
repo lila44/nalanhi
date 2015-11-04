@@ -15,8 +15,6 @@ boardServiceApplication.service('boardService', function($http) {
 			data   : null
 		}).success(function(data) {
 			callback(data);
-		}).error(function(e){
-			console.log(e);
 		});
 	};
 
@@ -27,8 +25,6 @@ boardServiceApplication.service('boardService', function($http) {
 			data   : null
 		}).success(function(data) {
 			callback(data);
-		}).error(function(e){
-			console.log(e);
 		});
 	};
 
@@ -41,8 +37,6 @@ boardServiceApplication.service('boardService', function($http) {
 		}).success(function(data) {
 			alert('저장되었습니다.');
 			callback(data);
-		}).error(function(e){
-			console.log(e);
 		});
 	};
 
@@ -54,8 +48,6 @@ boardServiceApplication.service('boardService', function($http) {
 		}).success(function(data) {
 			alert('수정되었습니다.');
 			callback(data);
-		}).error(function(e){
-			console.log(e);
 		});
 	};
 
@@ -67,8 +59,6 @@ boardServiceApplication.service('boardService', function($http) {
 		}).success(function(data) {
 			alert('삭제되었습니다.');
 			callback(data);
-		}).error(function(e){
-			console.log(e);
 		});
 	};
 });
