@@ -24,30 +24,30 @@ var datasource = mongoose.model('c_boards', c_board_schema);
 
 router.get('/board/boardList', function(request, response){
     datasource.find({}).sort('-name').exec(function(e, data){
-        response.json(data);
+        response.json({result:data});
     });
 });
 
 router.get('/board/boardView/:_id', function(request, response){
     datasource.findById(request.params._id, function(e, data){
-        response.json(data);
+        response.json({result:data});
     });
 });
 
 router.post('/board/insertBoard', function(request, response){
     datasource.create(request.body, function(e, data){
-        response.json(data);
+        response.json({result:data, message:"insert.ok"});
     });
 });
 
 router.put('/board/updateBoard/:_id', function(request, response){
     datasource.findByIdAndUpdate(request.params._id, request.body, function(e, data){
-        response.json(data);
+        response.json({result:data, message:"update.ok"});
     });
 });
 
 router.delete('/board/deleteBoard/:_id', function(request, response){
     datasource.findByIdAndRemove(request.params._id, function(e, data){
-        response.json(data);
+        response.json({result:data, message:"delete.ok"});
     });
 });
