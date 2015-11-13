@@ -3,7 +3,10 @@
     date        : 2015.11.04 16:47
     description : initialize interceptor
 */
-this.initialize = function(request, response, next) {
+function initialize(request, response, next) {
     console.log('application initialize..');
     next();
-};
+}
+
+// exports
+exports.initialize = initialize;

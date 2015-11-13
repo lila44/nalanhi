@@ -6,24 +6,18 @@
 var initializeInterceptor = angular.module('initializeInterceptor', []);
 
 initializeInterceptor.config(function($httpProvider) {
-    $httpProvider.interceptors.push(intercepter);
+    $httpProvider.interceptors.push(interceptor);
 });
 
-var intercepter = function($q, $location){
+var interceptor = function($injector, $q, $location){
 	return{
 		request : function(config){
 			return config;
 		},
 		response : function(response){
-
-            /*
-                todo. 20151104 임정채 메세지 템플릿 추가해서 해당 메세지 정보에 따라 반환하도록 처리
-            */
             var message = response.data.message;
             if(message){
-                if     ('insert.ok' == message){ alert('저장되었습니다.'); }
-                else if('update.ok' == message){ alert('수정되었습니다.'); }
-                else if('delete.ok' == message){ alert('삭제되었습니다.'); }
+                alert(message);
             }
 
 			return response;

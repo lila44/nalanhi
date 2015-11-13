@@ -5,17 +5,17 @@
 */
 var boardApplication = angular.module('boardApplication', ['ngRoute', 'initializeInterceptor', 'boardServiceApplication']);
 
-boardApplication.controller('boardListController', function ($scope, boardService) {
+boardApplication.controller('retrieveBoardListController', function ($scope, boardService) {
 
-	boardService.getBoardList(function(data){
+	boardService.retrieveBoardList(function(data){
 		$scope.boardList = data;
 	});
 });
 
-boardApplication.controller('boardViewController', function ($scope, $routeParams, $location, boardService) {
+boardApplication.controller('retrieveBoardController', function ($scope, $routeParams, $location, boardService) {
 
 	$scope.board = {};
-	boardService.getBoardView($routeParams, function(data){
+	boardService.retrieveBoard($routeParams, function(data){
 
 		$scope.board._id      = data._id;
 		$scope.board.name     = data.name;
@@ -25,25 +25,25 @@ boardApplication.controller('boardViewController', function ($scope, $routeParam
 
 	$scope.deleteBoard = function(){
 		boardService.deleteBoard($scope.board, function(data){
-			$location.url("/boardList");
+			$location.url("/retrieveBoardList");
 		});
     };
 });
 
-boardApplication.controller('boardInsertController', function ($scope, $location, boardService) {
+boardApplication.controller('insertBoardController', function ($scope, $location, boardService) {
 
 	$scope.board = {};
 	$scope.insertBoard = function(){
 		boardService.insertBoard($scope.board, function(data){
-			$location.url("/boardList");
+			$location.url("/retrieveBoardList");
 		});
     };
 });
 
-boardApplication.controller('boardUpdateController', function ($scope, $routeParams, $location, boardService) {
+boardApplication.controller('updateBoardController', function ($scope, $routeParams, $location, boardService) {
 
 	$scope.board = {};
-	boardService.getBoardView($routeParams, function(data){
+	boardService.retrieveBoard($routeParams, function(data){
 
 		$scope.board._id      = data._id;
 		$scope.board.name     = data.name;
@@ -53,7 +53,7 @@ boardApplication.controller('boardUpdateController', function ($scope, $routePar
 
 	$scope.updateBoard = function(){
 		boardService.updateBoard($scope.board, function(data){
-			$location.url("/boardList");
+			$location.url("/retrieveBoardList");
 		});
     };
 });
@@ -70,9 +70,9 @@ boardApplication.directive("directiveLayout", function(){
 
 boardApplication.config(function($routeProvider) {
 
-	$routeProvider.when     ('/boardList',        {templateUrl:'/board/boardList.html',   controller:'boardListController'  });
-	$routeProvider.when     ('/boardView/:_id',   {templateUrl:'/board/boardView.html',   controller:'boardViewController'  });
-	$routeProvider.when     ('/boardInsert',      {templateUrl:'/board/boardInsert.html', controller:'boardInsertController'});
-	$routeProvider.when     ('/boardUpdate/:_id', {templateUrl:'/board/boardUpdate.html', controller:'boardUpdateController'});
-	$routeProvider.otherwise('/boardList',        {templateUrl:'/board/boardList.html',   controller:'boardListController'  });
+	$routeProvider.when     ('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController'});
+	$routeProvider.when     ('/retrieveBoard/:_id', {templateUrl:'/board/retrieveBoard.html',     controller:'retrieveBoardController'    });
+	$routeProvider.when     ('/insertBoard',        {templateUrl:'/board/insertBoard.html',       controller:'insertBoardController'      });
+	$routeProvider.when     ('/updateBoard/:_id',   {templateUrl:'/board/updateBoard.html',       controller:'updateBoardController'      });
+	$routeProvider.otherwise('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController'});
 });

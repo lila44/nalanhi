@@ -7,3 +7,5 @@
 5. o using chrome javascript debugger
 6.   interceptor
       - 응답 정보에 따라 메세지 출력
+7.   login
+8.   wordpress theme

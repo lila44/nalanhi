@@ -5,6 +5,9 @@
 */
 var mongoose  = require('mongoose');
 
+// exports
+exports.getInstance = getInstance;
+
 // connect
 mongoose.connect(process.env.MONGO_DB);
 
@@ -14,6 +17,6 @@ mongoose.connection.once('open', function(){
 });
 
 
-this.getMongoose = function(){
+function getInstance(){
     return mongoose;
-};
+}

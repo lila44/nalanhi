@@ -7,21 +7,21 @@ var boardServiceApplication = angular.module('boardServiceApplication', []);
 
 boardServiceApplication.service('boardService', function($http) {
 
-	this.getBoardList = function(callback) {
+	this.retrieveBoardList = function(callback) {
 
 		var stream = $http({
 			method : 'get',
-			url    : '/board/boardList',
+			url    : '/board/retrieveBoardList',
 			data   : null
 		}).success(function(data) {
 			callback(data.result);
 		});
 	};
 
-	this.getBoardView = function(params, callback) {
+	this.retrieveBoard = function(params, callback) {
 		var stream = $http({
 			method : 'get',
-			url    : '/board/boardView/' + params._id,
+			url    : '/board/retrieveBoard/' + params._id,
 			data   : null
 		}).success(function(data) {
 			callback(data.result);

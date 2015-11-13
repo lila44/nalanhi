@@ -23,7 +23,7 @@ var path                  = require('path'                                      
 var bodyParser            = require('body-parser'                                               );
 var methodOverride        = require('method-override'                                           );
 var initializeInterceptor = require(__dirname + '/back/common/interceptor/initializeInterceptor');
-var boardRouter           = require(__dirname + '/back/router/boardRouter'                      );
+var boardRouter           = require(__dirname + '/back/router/board/boardRouter'                );
 var application           = express();
 
 
