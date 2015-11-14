@@ -3,12 +3,17 @@
     date        : 2015.11.02 13:00
     description : 게시판 서비스
 */
-var boardServiceApplication = angular.module('boardServiceApplication', []);
+angular.module('boardServiceApplication', [])
 
-boardServiceApplication.service('boardService', function($http) {
+.service('boardService', function($http) {
 
-	this.retrieveBoardList = function(callback) {
+    this.retrieveBoardList = retrieveBoardList;
+    this.retrieveBoard     = retrieveBoard;
+    this.insertBoard       = insertBoard;
+    this.updateBoard       = updateBoard;
+    this.deleteBoard       = deleteBoard;
 
+	function retrieveBoardList(params, callback) {
 		var stream = $http({
 			method : 'get',
 			url    : '/board/retrieveBoardList',
@@ -16,9 +21,9 @@ boardServiceApplication.service('boardService', function($http) {
 		}).success(function(data) {
 			callback(data.result);
 		});
-	};
+	}
 
-	this.retrieveBoard = function(params, callback) {
+	function retrieveBoard(params, callback) {
 		var stream = $http({
 			method : 'get',
 			url    : '/board/retrieveBoard/' + params._id,
@@ -26,10 +31,9 @@ boardServiceApplication.service('boardService', function($http) {
 		}).success(function(data) {
 			callback(data.result);
 		});
-	};
+	}
 
-	this.insertBoard = function(params, callback) {
-
+	function insertBoard(params, callback) {
 		var stream = $http({
 	        method   : 'post',
 	        url      : '/board/insertBoard',
@@ -37,9 +41,9 @@ boardServiceApplication.service('boardService', function($http) {
 		}).success(function(data) {
 			callback(data.result);
 		});
-	};
+	}
 
-	this.updateBoard = function(params, callback) {
+	function updateBoard(params, callback) {
 		var stream = $http({
 	        method   : 'put',
 	        url      : '/board/updateBoard/' + params._id,
@@ -47,9 +51,9 @@ boardServiceApplication.service('boardService', function($http) {
 		}).success(function(data) {
 			callback(data.result);
 		});
-	};
+	}
 
-	this.deleteBoard = function(params, callback) {
+	function deleteBoard(params, callback) {
 		var stream = $http({
 	        method   : 'delete',
 	        url      : '/board/deleteBoard/' + params._id,
@@ -57,5 +61,6 @@ boardServiceApplication.service('boardService', function($http) {
 		}).success(function(data) {
 			callback(data.result);
 		});
-	};
+	}
+
 });

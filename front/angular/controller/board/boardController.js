@@ -3,16 +3,17 @@
     date        : 2015.11.02 13:00
     description : 게시판 컨트롤러
 */
-var boardApplication = angular.module('boardApplication', ['ngRoute', 'initializeInterceptor', 'boardServiceApplication']);
+angular.module('boardApplication', ['ngRoute', 'initializeInterceptor', 'boardServiceApplication'])
 
-boardApplication.controller('retrieveBoardListController', function ($scope, boardService) {
+.controller('retrieveBoardListController', function ($scope, boardService) {
 
-	boardService.retrieveBoardList(function(data){
+	$scope.board = {};
+	boardService.retrieveBoardList($scope.board, function(data){
 		$scope.boardList = data;
 	});
-});
+})
 
-boardApplication.controller('retrieveBoardController', function ($scope, $routeParams, $location, boardService) {
+.controller('retrieveBoardController', function ($scope, $routeParams, $location, boardService) {
 
 	$scope.board = {};
 	boardService.retrieveBoard($routeParams, function(data){
@@ -28,9 +29,9 @@ boardApplication.controller('retrieveBoardController', function ($scope, $routeP
 			$location.url("/retrieveBoardList");
 		});
     };
-});
+})
 
-boardApplication.controller('insertBoardController', function ($scope, $location, boardService) {
+.controller('insertBoardController', function ($scope, $location, boardService) {
 
 	$scope.board = {};
 	$scope.insertBoard = function(){
@@ -38,9 +39,9 @@ boardApplication.controller('insertBoardController', function ($scope, $location
 			$location.url("/retrieveBoardList");
 		});
     };
-});
+})
 
-boardApplication.controller('updateBoardController', function ($scope, $routeParams, $location, boardService) {
+.controller('updateBoardController', function ($scope, $routeParams, $location, boardService) {
 
 	$scope.board = {};
 	boardService.retrieveBoard($routeParams, function(data){
@@ -56,9 +57,9 @@ boardApplication.controller('updateBoardController', function ($scope, $routePar
 			$location.url("/retrieveBoardList");
 		});
     };
-});
+})
 
-boardApplication.directive("directiveLayout", function(){
+.directive("directiveLayout", function(){
     return {
         restrict    : "E", // E:element, A:attribute, C:class
         scope       : false,
@@ -66,9 +67,9 @@ boardApplication.directive("directiveLayout", function(){
 			return "/common/" + attribute.type + ".html";
 		}
     };
-});
+})
 
-boardApplication.config(function($routeProvider) {
+.config(function($routeProvider) {
 
 	$routeProvider.when     ('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController'});
 	$routeProvider.when     ('/retrieveBoard/:_id', {templateUrl:'/board/retrieveBoard.html',     controller:'retrieveBoardController'    });
