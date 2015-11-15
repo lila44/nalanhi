@@ -22,6 +22,7 @@ var express               = require('express'                                   
 var path                  = require('path'                                                      );
 var bodyParser            = require('body-parser'                                               );
 var methodOverride        = require('method-override'                                           );
+var configs               = require(__dirname + '/back/resource/configs'                        );
 var initializeInterceptor = require(__dirname + '/back/common/interceptor/initializeInterceptor');
 var boardRouter           = require(__dirname + '/back/router/board/boardRouter'                );
 var application           = express();
@@ -50,6 +51,6 @@ application.use(function(request, response, next) {
 application.use(boardRouter);
 
 // listen request
-application.listen(process.env.NODE_SERVER_PORT, function(){
+application.listen(configs.server.port, function(){
     console.log('server ready..');
 });

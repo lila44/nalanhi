@@ -3,10 +3,11 @@
     date        : 2015.11.02 13:00
     description : mongodb driver
 */
-var mongoose  = require('mongoose');
+var mongoose = require('mongoose');
+var configs  = require('./../../resource/configs');
 
 // connect
-mongoose.connect(process.env.MONGO_DB);
+mongoose.connect(configs.database.connection.id);
 
 // ready
 mongoose.connection.once('open', function(){
