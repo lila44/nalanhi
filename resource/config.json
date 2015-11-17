@@ -1,0 +1,19 @@
+{
+	"gulp" : {
+		"src" : {
+			"js"     : "front/angular/**/*.js",
+			"html"   : "front/angular/**/*.html",
+			"public" : "front/public/**/*"
+		},
+		"target" : {
+			"js"     : "target/front/angular",
+			"html"   : "target/front/angular",
+			"public" : "target/front/public"
+		},
+		"minify" : {
+			"js"   : "target/nalanhi.min.js",
+			"css"  : "target/nalanhi.min.css"
+		},
+		"clean" : "target/**/*"
+	}
+}

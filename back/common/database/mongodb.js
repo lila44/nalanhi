@@ -4,10 +4,10 @@
     description : mongodb driver
 */
 var mongoose = require('mongoose');
-var configs  = require('./../../resource/configs');
+var systems  = require('./../../resource/systems');
 
 // connect
-mongoose.connect(configs.database.connection.id);
+mongoose.connect(systems.database.connection.id);
 
 // ready
 mongoose.connection.once('open', function(){

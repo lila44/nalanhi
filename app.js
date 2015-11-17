@@ -22,7 +22,7 @@ var express               = require('express'                                   
 var path                  = require('path'                                                      );
 var bodyParser            = require('body-parser'                                               );
 var methodOverride        = require('method-override'                                           );
-var configs               = require(__dirname + '/back/resource/configs'                        );
+var systems               = require(__dirname + '/back/resource/systems'                        );
 var initializeInterceptor = require(__dirname + '/back/common/interceptor/initializeInterceptor');
 var boardRouter           = require(__dirname + '/back/router/board/boardRouter'                );
 var application           = express();
@@ -51,6 +51,6 @@ application.use(function(request, response, next) {
 application.use(boardRouter);
 
 // listen request
-application.listen(configs.server.port, function(){
+application.listen(systems.server.port, function(){
     console.log('server ready..');
 });
