@@ -18,22 +18,28 @@
     - request.params : RESTful 요청에 동적으로 변경되는 :variable에 대한 처리
 
 */
-var express               = require('express'                                                   );
-var path                  = require('path'                                                      );
-var bodyParser            = require('body-parser'                                               );
-var methodOverride        = require('method-override'                                           );
-var systems               = require(__dirname + '/back/resource/systems'                        );
-var initializeInterceptor = require(__dirname + '/back/common/interceptor/initializeInterceptor');
-var boardRouter           = require(__dirname + '/back/router/board/boardRouter'                );
+var express               = require('express'        );
+var path                  = require('path'           );
+var bodyParser            = require('body-parser'    );
+var methodOverride        = require('method-override');
 var application           = express();
 
+// set global
+global._root              = path.resolve(__dirname);
+global._serverPort        = process.env.NODE_SERVER_PORT;
+global._mongodbUri        = process.env.MONGO_DB;
+global._message           = require(_root + '/resource/message');
+
+// custom module
+var initializeInterceptor = require(_root + '/back/common/interceptor/initializeInterceptor');
+var boardRouter           = require(_root + '/back/router/board/boardRouter'                );
 
 // web path
-application.use(express.static(__dirname + '/front/public'            ));
-application.use(express.static(__dirname + '/front/angular/view'      ));
-application.use(express.static(__dirname + '/front/angular/common'    ));
-application.use(express.static(__dirname + '/front/angular/service'   ));
-application.use(express.static(__dirname + '/front/angular/controller'));
+application.use(express.static(_root + '/front/public'            ));
+application.use(express.static(_root + '/front/angular/view'      ));
+application.use(express.static(_root + '/front/angular/common'    ));
+application.use(express.static(_root + '/front/angular/service'   ));
+application.use(express.static(_root + '/front/angular/controller'));
 
 // package - json parser
 application.use(bodyParser.json());
@@ -51,6 +57,6 @@ application.use(function(request, response, next) {
 application.use(boardRouter);
 
 // listen request
-application.listen(systems.server.port, function(){
+application.listen(_serverPort, function(){
     console.log('server ready..');
 });

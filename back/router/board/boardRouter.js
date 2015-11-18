@@ -4,7 +4,7 @@
     description : 게시판 라우터
 */
 var router       = require('express').Router();
-var boardService = require('./../../service/board/boardService');
+var boardService = require(_root + '/back/service/board/boardService');
 
 // module exports
 module.exports = router;

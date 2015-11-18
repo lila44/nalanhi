@@ -3,7 +3,7 @@
     date        : 2015.11.07 19:28
     description : 업체게시판 반환
 */
-var mongoose = require('./../../common/database/mongodb').getInstance();
+var mongoose = require(_root + '/back/common/database/mongodb').getInstance();
 
 // exports
 exports.getInstance = getInstance;
