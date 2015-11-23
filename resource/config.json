@@ -11,8 +11,8 @@
 			"public" : "target/front/public"
 		},
 		"minify" : {
-			"js"   : "target/nalanhi.min.js",
-			"css"  : "target/nalanhi.min.css"
+			"js"   : "/nalanhi.min.js",
+			"css"  : "/nalanhi.min.css"
 		},
 		"clean" : "target/**/*"
 	}

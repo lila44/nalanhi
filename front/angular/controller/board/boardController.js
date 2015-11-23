@@ -62,10 +62,10 @@ angular.module('app.controller.board', ['ngRoute', 'app.interceptor.initialize',
 .config(function($routeProvider) {
 
 	var libList = {
-	    retrieveBoardList:{load:function($ocLazyLoad){ return $ocLazyLoad.load (['/css/board.css', '/board/boardService.js', '/board/boardDirective.js']); }},
-		updateBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load (['/css/board.css', '/board/boardService.js'                            ]); }},
-	 	retrieveBoard    :{load:function($ocLazyLoad){ return $ocLazyLoad.load (['/css/board.css', '/board/boardService.js'                            ]); }},
-		insertBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load (['/css/board.css', '/board/boardService.js'                            ]); }}
+	    retrieveBoardList:{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/boardService.js', '/board/boardDirective.js']); }},
+		updateBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/boardService.js'                            ]); }},
+	 	retrieveBoard    :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/boardService.js'                            ]); }},
+		insertBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/boardService.js'                            ]); }}
 	};
 
 	$routeProvider.when     ('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController', resolve:libList.retrieveBoardList });

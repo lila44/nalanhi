@@ -18,10 +18,10 @@ gulp.task('clean', function () {
 });
 
 // minify js
-gulp.task('uglifyjs', ['clean'], function () {
+gulp.task('uglifyjs', function () {
     return gulp.src(config.gulp.src.js)
-               //.pipe(concat(config.gulp.minify.js))
-               .pipe(uglify())
+               .pipe(concat(config.gulp.minify.js))
+               //.pipe(uglify())
                .pipe(gulp.dest(config.gulp.target.js));
 });
 

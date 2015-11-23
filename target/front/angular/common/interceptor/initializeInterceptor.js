@@ -1,1 +1,0 @@
-angular.module("initializeInterceptor",[]).config(function(r){r.interceptors.push(interceptor)});var interceptor=function(r,e,n){return{request:function(r){return r},response:function(r){var e=r.data.message;return e&&alert(e),r},responseError:function(r){return console.log("responseError = ",r),e.reject(r)}}};
