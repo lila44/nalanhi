@@ -3,7 +3,7 @@
     date        : 2015.11.03 23:53
     description : initialize interceptor
 */
-angular.module('initializeInterceptor', []).config(function($httpProvider) {
+angular.module('app.interceptor.initialize', []).config(function($httpProvider) {
     $httpProvider.interceptors.push(interceptor);
 });
 

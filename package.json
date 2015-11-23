@@ -17,10 +17,13 @@
   },
   "homepage": "https://github.com/lila44/nalanhi#readme",
   "dependencies": {
+    "angular": "^1.4.8",
+    "angular-route": "^1.4.8",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "method-override": "^2.3.5",
-    "mongoose": "^4.2.2"
+    "mongoose": "^4.2.2",
+    "oclazyload": "^1.0.8"
   },
   "devDependencies": {
     "del": "^2.1.0",

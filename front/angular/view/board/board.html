@@ -4,30 +4,33 @@
 	description : 게시판 메인
 -->
 <!doctype html>
-<html ng-app="boardApplication">
+<html ng-app="app.controller.board">
 	<head>
 		<meta charset="utf-8">
-		<script src="/script/angular/1.4.7/angular.min.js"></script>
-		<script src="/script/angular/1.4.7/angular-route.min.js"></script>
+		<script src="/node_modules/angular/angular.min.js"></script>
+		<script src="/node_modules/angular-route/angular-route.min.js"></script>
+		<script src="/node_modules/oclazyload/dist/ocLazyLoad.min.js"></script>
 		<script src="/interceptor/initializeInterceptor.js"></script>
 		<script src="/board/boardController.js"></script>
+		<!--
 		<script src="/board/boardService.js"></script>
 		<link rel="stylesheet" type="text/css" href="/css/board.css" />
+		-->
 	</head>
 	<body>
 		<form name="form1">
 			<table border="1" width="600" height="400">
 				<tr>
-					<td rowspan="4" width="50"><directive-layout type="left"></directive-layout></td>
+					<td rowspan="4" width="50"><ng-include src="'/common/left.html'" /></td>
 				</tr>
 				<tr>
-					<td height="30"><directive-layout type="header"></directive-layout></td>
+					<td height="30"><ng-include src="'/common/header.html'" /></td>
 				</tr>
 				<tr>
 					<td height="360"><ng-view></ng-view></td>
 				</tr>
 				<tr>
-					<td height="30"><directive-layout type="footer"></directive-layout></td>
+					<td height="30"><ng-include src="'/common/footer.html'" /></td>
 				</tr>
 			</table>
 		</form>

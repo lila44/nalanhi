@@ -5,6 +5,7 @@
 -->
 <div>
 	<div>
+
 		<table>
 			<tr>
 				<td>번호</td>
@@ -15,6 +16,12 @@
 				<td><a ng-href="#retrieveBoard/{{board._id}}">{{board._id}}</a></td>
 				<td>{{board.title}}</td>
 				<td>{{board.name}}</td>
+			</tr>
+			<tr>
+				<td colspan="3">
+					<nalanhi-button type="button-insert"></nalanhi-button>
+					<nalanhi-button type="button-list"  ></nalanhi-button>
+				</td>
 			</tr>
 		</table>
 

@@ -35,10 +35,12 @@ var initializeInterceptor = require(_root + '/back/common/interceptor/initialize
 var boardRouter           = require(_root + '/back/router/board/boardRouter'                );
 
 // web path
+application.use(express.static(_root));
 application.use(express.static(_root + '/front/public'            ));
 application.use(express.static(_root + '/front/angular/view'      ));
 application.use(express.static(_root + '/front/angular/common'    ));
 application.use(express.static(_root + '/front/angular/service'   ));
+application.use(express.static(_root + '/front/angular/directive' ));
 application.use(express.static(_root + '/front/angular/controller'));
 
 // package - json parser

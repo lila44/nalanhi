@@ -3,7 +3,7 @@
     date        : 2015.11.02 13:00
     description : 게시판 컨트롤러
 */
-angular.module('boardApplication', ['ngRoute', 'initializeInterceptor', 'boardServiceApplication'])
+angular.module('app.controller.board', ['ngRoute', 'app.interceptor.initialize', 'oc.lazyLoad'])
 
 .controller('retrieveBoardListController', function ($scope, boardService) {
 
@@ -59,21 +59,18 @@ angular.module('boardApplication', ['ngRoute', 'initializeInterceptor', 'boardSe
     };
 })
 
-.directive("directiveLayout", function(){
-    return {
-        restrict    : "E", // E:element, A:attribute, C:class
-        scope       : false,
-		templateUrl : function(element, attribute){
-			return "/common/" + attribute.type + ".html";
-		}
-    };
-})
-
 .config(function($routeProvider) {
 
-	$routeProvider.when     ('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController'});
-	$routeProvider.when     ('/retrieveBoard/:_id', {templateUrl:'/board/retrieveBoard.html',     controller:'retrieveBoardController'    });
-	$routeProvider.when     ('/insertBoard',        {templateUrl:'/board/insertBoard.html',       controller:'insertBoardController'      });
-	$routeProvider.when     ('/updateBoard/:_id',   {templateUrl:'/board/updateBoard.html',       controller:'updateBoardController'      });
-	$routeProvider.otherwise('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController'});
+	var libList = {
+	    retrieveBoardList:{load:function($ocLazyLoad){ return $ocLazyLoad.load (['/css/board.css', '/board/boardService.js', '/board/boardDirective.js']); }},
+		updateBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load (['/css/board.css', '/board/boardService.js'                            ]); }},
+	 	retrieveBoard    :{load:function($ocLazyLoad){ return $ocLazyLoad.load (['/css/board.css', '/board/boardService.js'                            ]); }},
+		insertBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load (['/css/board.css', '/board/boardService.js'                            ]); }}
+	};
+
+	$routeProvider.when     ('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController', resolve:libList.retrieveBoardList });
+	$routeProvider.when     ('/retrieveBoard/:_id', {templateUrl:'/board/retrieveBoard.html',     controller:'retrieveBoardController',     resolve:libList.retrieveBoard     });
+	$routeProvider.when     ('/insertBoard',        {templateUrl:'/board/insertBoard.html',       controller:'insertBoardController',       resolve:libList.insertBoard       });
+	$routeProvider.when     ('/updateBoard/:_id',   {templateUrl:'/board/updateBoard.html',       controller:'updateBoardController',       resolve:libList.updateBoard       });
+	$routeProvider.otherwise('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController', resolve:libList.retrieveBoardList });
 });

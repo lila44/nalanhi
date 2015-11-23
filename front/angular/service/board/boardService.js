@@ -3,7 +3,7 @@
     date        : 2015.11.02 13:00
     description : 게시판 서비스
 */
-angular.module('boardServiceApplication', [])
+angular.module('app.service.board', [])
 
 .service('boardService', function($http) {
 
