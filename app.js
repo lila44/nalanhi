@@ -43,6 +43,13 @@ application.use(express.static(_root + '/front/angular/service'   ));
 application.use(express.static(_root + '/front/angular/directive' ));
 application.use(express.static(_root + '/front/angular/controller'));
 
+// target web path
+// application.use(express.static(_root));
+// application.use(express.static(_root + '/target/front/public'      ));
+// application.use(express.static(_root + '/target/front/angular'     ));
+// application.use(express.static(_root + '/target/front/angular/view'));
+
+
 // package - json parser
 application.use(bodyParser.json());
 application.use(bodyParser.urlencoded({extended:true}));
