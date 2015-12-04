@@ -4,7 +4,7 @@
 	description : 게시판 메인
 -->
 <!doctype html>
-<html ng-app="app.controller.board">
+<html ng-clock ng-app="app.controller.board">
 	<head>
 		<meta charset="utf-8">
 	</head>
@@ -26,10 +26,10 @@
 			</table>
 		</form>
 	</body>
-	<script src="/node_modules/angular/angular.min.js"></script>
+	<link   rel="stylesheet" href="/css/board.css"                ></link>
+	<script src="/node_modules/angular/angular.min.js"            ></script>
 	<script src="/node_modules/angular-route/angular-route.min.js"></script>
-	<script src="/node_modules/oclazyload/dist/ocLazyLoad.min.js"></script>
-	<script src="/interceptor/initializeInterceptor.js"></script>
-	<script src="/board/boardController.js"></script>
-	<link rel="stylesheet" type="text/css" href="/css/board.css" />
+	<script src="/node_modules/oclazyload/dist/ocLazyLoad.min.js" ></script>
+	<script src="/interceptor/initializeInterceptor.js"           ></script>
+	<script src="/board/boardController.js"                       ></script>
 </html>

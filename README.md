@@ -10,3 +10,6 @@
  8. o wordpress theme
  9.   데이터모델 수정
 10.   화면 구성
+11. o lib lazy load
+12.   karma
+13.   jasmine
