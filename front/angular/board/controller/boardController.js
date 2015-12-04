@@ -66,15 +66,15 @@ angular.module('app.controller.board', [
 .config(function($routeProvider) {
 
 	var libList = {
-		retrieveBoardList:{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/boardService.js', '/board/boardDirective.js']); }},
-		retrieveBoard    :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/boardService.js'                            ]); }},
-		insertBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/boardService.js'                            ]); }},
-		updateBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/boardService.js'                            ]); }}
+		retrieveBoardList:{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/service/boardService.js', '/board/directive/boardDirective.js']); }},
+		retrieveBoard    :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/service/boardService.js'                                      ]); }},
+		insertBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/service/boardService.js'                                      ]); }},
+		updateBoard      :{load:function($ocLazyLoad){ return $ocLazyLoad.load(['/board/service/boardService.js'                                      ]); }}
 	};
 
-	$routeProvider.when     ('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController', resolve:libList.retrieveBoardList});
-	$routeProvider.when     ('/retrieveBoard/:_id', {templateUrl:'/board/retrieveBoard.html',     controller:'retrieveBoardController',     resolve:libList.retrieveBoard    });
-	$routeProvider.when     ('/insertBoard',        {templateUrl:'/board/insertBoard.html',       controller:'insertBoardController',       resolve:libList.insertBoard      });
-	$routeProvider.when     ('/updateBoard/:_id',   {templateUrl:'/board/updateBoard.html',       controller:'updateBoardController',       resolve:libList.updateBoard      });
-	$routeProvider.otherwise('/retrieveBoardList',  {templateUrl:'/board/retrieveBoardList.html', controller:'retrieveBoardListController', resolve:libList.retrieveBoardList});
+	$routeProvider.when     ('/retrieveBoardList',  {templateUrl:'/board/view/retrieveBoardList.html', controller:'retrieveBoardListController', resolve:libList.retrieveBoardList});
+	$routeProvider.when     ('/retrieveBoard/:_id', {templateUrl:'/board/view/retrieveBoard.html',     controller:'retrieveBoardController',     resolve:libList.retrieveBoard    });
+	$routeProvider.when     ('/insertBoard',        {templateUrl:'/board/view/insertBoard.html',       controller:'insertBoardController',       resolve:libList.insertBoard      });
+	$routeProvider.when     ('/updateBoard/:_id',   {templateUrl:'/board/view/updateBoard.html',       controller:'updateBoardController',       resolve:libList.updateBoard      });
+	$routeProvider.otherwise('/retrieveBoardList',  {templateUrl:'/board/view/retrieveBoardList.html', controller:'retrieveBoardListController', resolve:libList.retrieveBoardList});
 });

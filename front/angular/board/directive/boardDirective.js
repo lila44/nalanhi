@@ -10,7 +10,7 @@ angular.module('app.directive.board', [])
         restrict    : "E", // E:element, A:attribute, C:class
         scope       : false,
 		templateUrl : function(element, attribute){
-			return "/common/" + attribute.type + ".html";
+			return "/common/view/custom/button/" + attribute.type + ".html";
 		}
     };
 });
